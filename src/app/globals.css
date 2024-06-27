@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+.login {
+  margin: 20px;
+  padding: 20px;
+  font-size: 19px;
+  width: 350px;
+  background-color: aqua;
+}
