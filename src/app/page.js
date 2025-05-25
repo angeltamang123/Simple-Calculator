@@ -39,6 +39,9 @@ const Home = () => {
                 setNumber((eval(number)/100).toString())
                 break;
             case '=':
+                if(orangeColorGang.includes(number.slice(-1))){
+                    return
+                }
                 setNumber(eval(number).toString())
                 break;
             case '.':
@@ -80,18 +83,20 @@ const Home = () => {
     }
 
   return (
-    <div className='m-12 justify-center items-center border border-black w-[35%]  bg-black rounded-lg'>   
-        <div className='text-white border border-white m-2 p-4'> 
-            {number}
+    <div className='min-h-screen flex grow justify-center items-center'>
+        <div className='m-12 justify-center items-center border border-black w-[30%]  bg-black rounded-lg'>
+            <div className='text-white border border-white m-2 p-4'>
+                {number}
+            </div>
+            {calcInput.map((item)=>{
+             return( <div className='m-0.5 p-1'>
+                {item.map((val, index)=>{
+                return <Button key={index} onClick={()=>calculate(val)} className={generateClassName(val)}>{val}</Button>
+               })}
+            </div>)
+        
+            })}
         </div>
-        {calcInput.map((item)=>{
-         return( <div className=' m-2 p-2 '>
-            {item.map((val)=>{
-            return <Button onClick={()=>calculate(val)} className={generateClassName(val)}>{val}</Button>
-           })}
-        </div>)
-           
-        })}
     </div>
   )
 }
